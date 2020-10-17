@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^clickervolt-gcw3x.ondigitalocean.app [NC,OR]
+RewriteCond %{HTTP_HOST} ^clickervolt-gcw3x.ondigitalocean.app [NC]
+RewriteRule ^(.*)$ https://clickervolt-gcw3x.ondigitalocean.app/$1 [L,R=301,NC]
