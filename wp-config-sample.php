@@ -20,22 +20,55 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'database_name_here' );
+//define( 'DB_NAME', 'database_name_here' );
 
 /** MySQL database username */
-define( 'DB_USER', 'username_here' );
+//define( 'DB_USER', 'username_here' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'password_here' );
+//define( 'DB_PASSWORD', 'password_here' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'localhost' );
+//define( 'DB_HOST', 'localhost' );
 
 /** Database Charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
+//define( 'DB_CHARSET', 'utf8' );
 
 /** The Database Collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
+//define( 'DB_COLLATE', '' );
+
+
+//mysql://clickervolt:nmhvh9zx4ceg5vcb@private-db-mysql-ams3-90306-do-user-1580675-0.b.db.ondigitalocean.com:25060/clickervoltdb?ssl-mode=REQUIRED
+
+// This will usually be received from an env variable, for example $connectionString = getenv('DB_URL');
+$connectionString = 'mysql://clickervolt:nmhvh9zx4ceg5vcb@private-db-mysql-ams3-90306-do-user-1580675-0.b.db.ondigitalocean.com:25060/clickervoltdb?ssl-mode=REQUIRED';
+
+// The values below will be your default values if $connectionString is empty. 
+$dbConfig = array_merge(
+    [
+      'host' => 'localhost',
+      'port' => 3306,
+      'user' => 'root',
+      'pass' => '',
+      'path' => 'wp', // DB_NAME
+    ],
+    array_filter(parse_url($connectionString))
+);
+
+/** The name of the database for WordPress */
+define('DB_NAME', ltrim($dbConfig['path'], '/'));
+
+/** MySQL database username */
+define('DB_USER', $dbConfig['user']);
+
+/** MySQL database username */
+define('DB_PASSWORD', $dbConfig['pass']);
+
+/** MySQL hostname */
+define('DB_HOST', "{$dbConfig['host']}:{$dbConfig['port']}");
+
+
+
 
 /**#@+
  * Authentication Unique Keys and Salts.
