@@ -41,7 +41,7 @@
 //mysql://clickervolt:nmhvh9zx4ceg5vcb@private-db-mysql-ams3-90306-do-user-1580675-0.b.db.ondigitalocean.com:25060/clickervoltdb?ssl-mode=REQUIRED
 
 // This will usually be received from an env variable, for example $connectionString = getenv('DB_URL');
-$connectionString = 'mysql://clickervolt:show-password@private-db-mysql-ams3-90306-do-user-1580675-0.b.db.ondigitalocean.com:25060/clickervoltdb';
+$connectionString = 'mysql://clickervolt:show-password@private-db-mysql-ams3-90306-do-user-1580675-0.b.db.ondigitalocean.com:25060/clickervoltdb?ssl-mode=REQUIRED';
 
 // The values below will be your default values if $connectionString is empty. 
 $dbConfig = array_merge(
